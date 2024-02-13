@@ -23,6 +23,6 @@ const io = new Server(expressServer, {
     console.log(`User Connected: ${socket.id}`);
     socket.on('chat message', (msg) => {
       console.log(msg);
-      io.emit('chat message', msg); // Broadcast the message to all connected clients
+      io.emit('chat message', msg); 
     });
   });
