@@ -21,5 +21,8 @@ const io = new Server(expressServer, {
   
   io.on("connection", (socket) => {
     console.log(`User Connected: ${socket.id}`);
-    
+    socket.on('chat message', (msg) => {
+      console.log(msg);
+      io.emit('chat message', msg); // Broadcast the message to all connected clients
+    });
   });
