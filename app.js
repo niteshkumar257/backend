@@ -14,7 +14,7 @@ const expressServer=app.listen(port,()=>{
 
 const io = new Server(expressServer, {
     cors: {
-      origin: "http://localhost:3000",
+      origin: ["http://localhost:3000","https://frontend-tn6p.onrender.com/"],
       methods: ["GET", "POST"],
     },
   });
