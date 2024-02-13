@@ -14,7 +14,7 @@ const expressServer=app.listen(port,()=>{
 
 const io = new Server(expressServer, {
     cors: {
-      origin: "http://localhost:3000",
+      origin: ["http://localhost:3000","https://frontend-tn6p.onrender.com/"],
       methods: ["GET", "POST"],
     },
   });
@@ -23,6 +23,6 @@ const io = new Server(expressServer, {
     console.log(`User Connected: ${socket.id}`);
     socket.on('chat message', (msg) => {
       console.log(msg);
-      io.emit('chat message', msg); // Broadcast the message to all connected clients
+      io.emit('chat message', msg); 
     });
   });
