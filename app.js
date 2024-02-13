@@ -1,6 +1,7 @@
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv"
+import { Server } from "socket.io";
 
 dotenv.config();
 
@@ -10,3 +11,15 @@ const port=process.env.PORT || 5000;
 const expressServer=app.listen(port,()=>{
   console.log(`listenging to the port ${port}`);
 }); 
+
+const io = new Server(expressServer, {
+    cors: {
+      origin: "http://localhost:3000",
+      methods: ["GET", "POST"],
+    },
+  });
+  
+  io.on("connection", (socket) => {
+    console.log(`User Connected: ${socket.id}`);
+    
+  });
